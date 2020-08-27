@@ -1,12 +1,14 @@
 const express = require('express');
 const bodyParser =require('body-parser');
 const cors = require('cors');
+const BookRoutes = require('./routes/article-route')
 
 const app = express();
 
 //enable parsing of http request
 app.use(bodyParser.json());
 app.use(cors());
+app.use('/book',BookRoutes);
 
 //routes and api calls
 

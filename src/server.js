@@ -15,9 +15,15 @@ app.use('/book',BookRoutes);
 app.use('/hello',(req,res)=>res.send('HELLO WORLD'));
 
 //start node server
-
+require('./configs/sequelize').connectDB()
+.then(()=>{
+    console.log('Connected successfully to database server');
 const port = process.env.PORT || 3000;
 app.listen(port,()=> {
     console.log(`\x1b[32m(PLAIN) Server Listening on port ${port}\x1b[0m.`);
+});
+})
+.catch(err =>{
+    console.error('Unable to connect to database server :',err.message);
 });
 

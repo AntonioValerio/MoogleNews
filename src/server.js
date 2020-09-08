@@ -1,18 +1,19 @@
 const express = require('express');
 const bodyParser =require('body-parser');
 const cors = require('cors');
-const BookRoutes = require('./routes/article-route')
+const NewsRoute = require('./routes/article-route')
 
 const app = express();
 
 //enable parsing of http request
 app.use(bodyParser.json());
 app.use(cors());
-app.use('/book',BookRoutes);
+app.use('/',NewsRoute);
 
 //routes and api calls
 
 app.use('/hello',(req,res)=>res.send('HELLO WORLD'));
+app.use('/user',require('./routes/user-route.js'))
 
 //start node server
 require('./configs/sequelize').connectDB()

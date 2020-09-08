@@ -11,7 +11,7 @@ let _db;
 const connectDB = () => {
     return new Promise((resolve,reject)=>{
         sequelize
-        .autheticate()
+        .authenticate()
         .then(()=>{
             _db = {
                 articles:require('../models/articles.js') (sequelize,Sequelize),               
@@ -26,4 +26,4 @@ const connectDB = () => {
 const getDB = ()=> _db;
 const disconnectDB= ()=> sequelize.close ();
 
-module.exports={connectDB,getDB,disconnectDB};
+module.exports={connectDB,getDB,disconnectDB};  

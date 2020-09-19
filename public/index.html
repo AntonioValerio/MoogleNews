@@ -1,25 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Moogle News</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-   
-</head>
-<body>
-    <table class ="table" style="margin-top: 10px;">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Game</th>
-                <th>Author</th>
-                <th>Date of Publication</th>
-            </tr>
-        </thead>
-        <tbody id="tableBody"></tbody>
-    </table>
-</body>
-</html>
+class headbar extends React.Component {
+    render() {
+      return (
+  
+      );
+    }
+  }
+  
+  class noti extends React.Component {
+    render() {
+      return (
+       //como ter o titulo= this.props.titulo
+       //como ter a imagem = this.props.img
+       //como ter a descrição = this.props.desc
+      );
+    }
+  }
+  
+  class noticias extends React.Component {
+    render() {
+      return (
+        <div className="base">
+          <div className="headbar">
+            <headbar />
+          </div>
+          <div className="noti">
+            <noticia titulo={"a"},img={"a"},desc={"a"},/>
+          </div>
+        </div>
+      );
+    }
+  }
+  
+  // ========================================
+  
+  ReactDOM.render(
+    <noticias />,
+    document.getElementById('root')
+  );

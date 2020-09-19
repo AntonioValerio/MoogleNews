@@ -16,6 +16,7 @@ db.run(`CREATE TABLE IF NOT EXISTS articles (
     '_id' UUID PRIMARY KEY,
     'title' VARCHAR(255),
     'game' VARCHAR(255),
+    'text' VARCHAR(255),
     'Author' VARCHAR(255),
     'date' DATE 
 )`);

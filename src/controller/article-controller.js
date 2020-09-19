@@ -1,4 +1,4 @@
-const bookService =require('../service/article-service');
+const bookService =require('../service/article-sequelize');
 
 exports.getArticles = (req,res)=>{
     bookService.getArticles()

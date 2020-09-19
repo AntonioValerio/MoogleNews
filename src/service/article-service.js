@@ -1,48 +1,33 @@
-const db = require('../configs/sequelize.js').getDB();
+const books = require ('./article.json');
 
-exports.getArticles = () =>{
-    return new Promise((resolve,reject) =>{
-        db.articles
-        .findAll({attributes :['_id','title','game','author']})
-        .then( articles => resolve(articles))
-        .catch(err => reject(err));
-    });
+exports.getBooks = () => {
+  return new Promise ((resolve, reject) => {
+    resolve (
+      books.map (book => ({
+        _id: book._id,
+        title: book.title,
+        author: book.author,
+      }))
+    );
+  });
 };
-
-exports.getArticle = id =>{
-    return new Promise((resolve,reject)=>{
-        //resolve(articles.find(article=> article._id===id));
-        db.articles
-        .findByPk(id)
-        .then(article => resolve(article))
-        .catch(err = reject(err));
-    });
+exports.getBook = id => {
+  return new Promise ((resolve, reject) => {
+    resolve (books.find (book => book._id == id));
+  });
 };
-
-exports.addArticle = article =>{
-    return new Promise((resolve,reject)=>{
-       // resolve({inserted:1 });
-       db.articles
-       .create(body)
-       .then(article => resolve({inserted: 1, _id: article._id}))
-       .catch(err => reject(err));
-    });
+exports.insertBook = body => {
+  return new Promise ((resolve, reject) => {
+    resolve ({inserted: 1});
+  });
 };
-
-exports.updateArticle = (id,article) =>{
-    return new Promise((resolve,reject)=>{
-       // resolve({updated:1});
-       db.articles
-       .update(id,body)
-       .then(article => resolve({updated:1 , _id: article._id}))
-    });
+exports.updateBook = (id, body) => {
+  return new Promise ((resolve, reject) => {
+    resolve ({updated: 1});
+  });
 };
-
-exports.deleteArticle = id =>{
-    return new Promise((resolve,reject)=>{
-        //resolve ({deleted:1});
-        db.articles
-        .delete(id)
-        .then(article => resolve({deleted :1}))
-    });
+exports.removeBook = id => {
+  return new Promise ((resolve, reject) => {
+    resolve ({removed: 1});
+  });
 };

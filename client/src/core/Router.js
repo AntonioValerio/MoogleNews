@@ -11,7 +11,7 @@ export default class RouterComponent extends React.Component{
                 <Navbar bg="dark" expand="lg">
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link href="/news/list">Home</Nav.Link>
+                        <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/about">About</Nav.Link>
                     </Nav>
                     </Navbar.Collapse>

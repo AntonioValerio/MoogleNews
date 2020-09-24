@@ -1,7 +1,8 @@
 import React from 'react';
 import {Container,Button,Table,Alert} from "react-bootstrap";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import services from '../../services';
+import {faInfo,faPlus} from '@fortawesome/free-solid-svg-icons'
+import services from '../../services/article';
 
 
 export default class NewsListPage extends React.Component{
@@ -19,19 +20,12 @@ componentDidMount() {
 }
 
 getList() {
-    if (this.props.location.pathname === "/news/list")
-      services.article
+      services
         .getAll()
-        .then((value) => this.setState({ books: value, favorites: false }))
+        .then((value) => this.setState({ news: value, favorites: false }))
         .catch((err) => this.setState({ error: err }));
-    else
-      services.user
-        .getBooks()
-        .then((value) => this.setState({ books: value, favorites: true }))
-        .catch((err) => this.setState({ error: err }));
+    
   }
-
-
 
   render(){
 
@@ -51,16 +45,15 @@ getList() {
                 </Button>
         </div>
 
-        <SubmitDialogComponent
-          show={toCreate}
-          handleClose={() => this.setState({ toCreate: false })}
-          submited={(createdBook) => this.setState({ books: [...books, createdBook], toCreate: false })}
-        />
+    
     
         <Table responsive>
             <thead>
                 <tr>
                     <th>Title</th>
+                    <th>Game</th>
+                    <th>Content</th>
+                    <th>Author</th>
                     <th>Publish Date</th>
                     <th />
                 </tr>
@@ -69,8 +62,11 @@ getList() {
                 {news.map((article,index)=>(
                     <tr key={`article${index}`}>
                         <td>{article.title}</td>
-                        <td>{article.publishDate}</td>
-                        <td style={{textAlign="right"}}>
+                        <td>{article.game}</td>
+                        <td>{article.text}</td>
+                        <td>{article.author}</td>
+                        <td>{article.publish_date}</td>
+                        <td style={{textAlign:"right"}}>
                             <Button 
                             variant="outline-primary"
                             onClick={()=>this.props.history.push(`/news/details/${article._id}`)}

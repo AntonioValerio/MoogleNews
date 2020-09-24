@@ -16,7 +16,7 @@ const connectDB = () => {
             _db = {
                 Articles :require('../models/articles.js') ( sequelize , Sequelize),               
             };  
-            return sequelize.sync ();
+            return sequelize.sync();
         })
         .then(()=>   resolve() )
         .catch(err => reject(err));
@@ -32,7 +32,7 @@ const connectDB = () => {
     });
 };
 
-const getDB = ()=> sequelize;
+const getDB = ()=> _db;
 const disconnectDB= ()=> sequelize.close ();
 
 module.exports={ connectDB , getDB, get_articles,disconnectDB };

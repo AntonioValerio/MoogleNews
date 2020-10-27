@@ -3,6 +3,7 @@ import {Container,Button,Table,Alert} from "react-bootstrap";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faInfo,faPlus} from '@fortawesome/free-solid-svg-icons'
 import services from '../../services/article';
+import SubmitDialogComponent from '../../components/article/SubmitDialog';
 
 
 export default class NewsListPage extends React.Component{
@@ -11,7 +12,7 @@ export default class NewsListPage extends React.Component{
         this.state={
             news:[],
             error:undefined,
-            //toCreate:false
+            toCreate:false
         }
     };
 
@@ -45,7 +46,11 @@ getList() {
                 </Button>
         </div>
 
-    
+        <SubmitDialogComponent 
+        //show={ }
+        handleClose={()=>this.setState({toCreate : false})}
+        submited ={(createdArticle)=> this.setState({news:[...news,createdArticle] , toCreate:false})}
+        />  
     
         <Table responsive>
             <thead>
@@ -69,7 +74,7 @@ getList() {
                         <td style={{textAlign:"right"}}>
                             <Button 
                             variant="outline-primary"
-                            onClick={()=>this.props.history.push(`/news/details/${article.id}`)}
+                            onClick={()=>this.props.history.push(`/news/Details/${article._id}`)}
                             >
                                 <FontAwesomeIcon icon={faInfo} />
                             </Button>

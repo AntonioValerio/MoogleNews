@@ -11,7 +11,7 @@ export default class NewsListPage extends React.Component{
         this.state={
             news:[],
             error:undefined,
-            toCreate:false
+            //toCreate:false
         }
     };
 
@@ -69,7 +69,7 @@ getList() {
                         <td style={{textAlign:"right"}}>
                             <Button 
                             variant="outline-primary"
-                            onClick={()=>this.props.history.push(`/news/details/${article._id}`)}
+                            onClick={()=>this.props.history.push(`/news/details/${article.id}`)}
                             >
                                 <FontAwesomeIcon icon={faInfo} />
                             </Button>
@@ -79,7 +79,7 @@ getList() {
             </tbody>
         </Table>
 
-        </Container>
+        </Container>    
     );
 
  }
